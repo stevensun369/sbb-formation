@@ -107,14 +107,13 @@ func forwardFormation(c fiber.Ctx) error {
 }
 
 var GTFSToAPIOperator = map[string]string{
-	// SBB (Swiss Federal Railways)
-	"11":     "SBBP",
-	"351":    "SBBP",
-	"L7____": "SBBP",
-	"78":     "SBBP",
-	"81":     "SBBP",
-	"56":     "SBBP",
-	"38":     "SBBP",
+	// SBB and affiliated operators → SBBP
+	"11":     "SBBP", // Schweizerische Bundesbahnen SBB
+	"351":    "SBBP", // SBB GmbH (Grenzverkehr)
+	"L7____": "SBBP", // SBB GmbH
+	"81":     "SBBP", // Aare Seeland mobil (snb)
+	"56":     "SBBP", // Aare Seeland mobil (rvo)
+	"38":     "SBBP", // Aare Seeland mobil (bti)
 
 	// THURBO
 	"65": "THURBO",
@@ -122,34 +121,31 @@ var GTFSToAPIOperator = map[string]string{
 	// BLS
 	"33": "BLS",
 
-	// RhB (Rhätische Bahn)
+	// RhB
 	"72": "RhB",
 
-	// SOB (Südostbahn)
+	// SOB
 	"82": "SOB",
 
-	// MBC (Montreux-Bernois)
-	"64":  "MBC",
-	"42":  "MBC",
-	"131": "MBC",
-	"29":  "MBC",
+	// MBC
+	"64": "MBC", // Montreux-Oberland Bernois
 
-	// OeBB (Österreichische Bundesbahnen)
-	"81____": "OeBB",
-	"817000": "OeBB",
+	// OeBB
+	"81____": "OeBB", // Österreichische Bundesbahnen
+	"817000": "OeBB", // NeTS Planung ÖBB
 
-	// TPF (Transports publics fribourgeois)
-	"53": "TPF",
+	// TPF
+	"53": "TPF", // Transports publics fribourgeois
 
-	// TRN (Transports Régionaux)
-	"44": "TRN",
-	"73": "TRN",
+	// TRN
+	"44": "TRN", // Transports Publics Neuchâtelois SA (cmn)
+	"73": "TRN", // Transports Publics Neuchâtelois SA (rvt)
 
-	// VDBB (Verkehrsverbund Baden-Württemberg)
-	"06____": "VDBB",
-	"800693": "VDBB",
-	"807000": "VDBB",
+	// VDBB
+	"06____": "VDBB", // DB Regio AG Baden-Württemberg
+	"800693": "VDBB", // DB Regio AG Baden-Württemberg
+	"807000": "VDBB", // NeTS Planung DB
 
-	// ZB (Zentralbahn)
-	"86": "ZB",
+	// ZB
+	"86": "ZB", // Zentralbahn
 }
