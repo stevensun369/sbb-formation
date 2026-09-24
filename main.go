@@ -57,8 +57,17 @@ func forwardFormation(c fiber.Ctx) error {
 	evu := c.Query("evu")
 	trainNumber := c.Query("trainNumber")
 
-	if _, err := time.Parse("2006-01-02", operationDate); err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(errorResponse{Error: "date must use the yyyy-mm-dd format"})
+	today := time.Now().UTC().Truncate(24 * time.Hour)
+	if operationDate == "" {
+		operationDate = today.Format("2006-01-02")
+	} else {
+		inputDate, err := time.ParseInLocation("2006-01-02", operationDate, time.UTC)
+		if err != nil {
+			return c.Status(fiber.StatusBadRequest).JSON(errorResponse{Error: "date must use the yyyy-mm-dd format"})
+		}
+		if difference := inputDate.Sub(today); difference > 3*24*time.Hour || difference < -3*24*time.Hour {
+			return c.JSON(struct{}{})
+		}
 	}
 	if evu == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(errorResponse{Error: "evu is required"})
